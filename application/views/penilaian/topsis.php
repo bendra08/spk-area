@@ -68,6 +68,7 @@
               <th>Alternatif/Kriteria</th>
               <?php foreach (@$data['kriteria-reference'] as $row) { ?>
               <th><?= $row['kode'] ?></th>
+              
               <?php } ?>
             </tr>
           </thead>
@@ -149,12 +150,12 @@
             </tr>
           </thead>
           <tbody>
-            <?php foreach (@$data['area'] as $tim) { ?>
+            <?php foreach (@$data['area'] as $area ) { ?>
               <tr>
-                <td><?= $tim->a_nama ?></td>
+                <td><?= $area->a_nama ?></td>
                 <?php foreach (@$data['kriteria-reference'] as $kriteria) { ?>
                   <?php foreach (@$data['ternormalisasi'] as $row) {
-                    if($row['id_cip']==$tim->a_kode && $row['kriteria']==$kriteria['kode']){ 
+                    if($row['id_cip']==$area->a_kode && $row['kriteria']==$kriteria['kode']){ 
                   ?>
                       <td><?= round($row['terbobot'],4) ?></td>
                   <?php } } ?>
@@ -243,9 +244,6 @@
           </tbody>
         </table>
       </div>
-      <!-- /.box-body -->
-      <!-- /.box-footer-->
+    
     </div>
-    <!-- /.box -->
   </section>
-  <!-- /.content -->

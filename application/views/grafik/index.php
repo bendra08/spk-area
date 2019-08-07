@@ -1,7 +1,7 @@
 <section class="content-header">
     <h1>
         <?= fs_title() ?>
-        <small>Grafik</small>
+        <small>Grafik SAW</small>
     </h1>
 </section>
 
@@ -10,6 +10,7 @@
     <!-- Small boxes (Stat box) -->
 
     <div id="grafik" class="col-md-12" hidden>
+        <?= anchor('user/grafik/topsis','Grafik Topsis',array('class'=>'btn btn-primary')) ?><br><br>
         <div class="box box-primary">
             <div class="box-body box-profile">
                 

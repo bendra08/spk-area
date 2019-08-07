@@ -37,7 +37,6 @@
                     <tr>
                         <th>Kode Area</th>
                         <?php foreach ($data['kriteria'] as $kriteria) { ?>
-                         
                             <th><?= $kriteria->k_nama ?></th>
                         <?php } ?>
                     </tr>
@@ -45,7 +44,6 @@
                 <tbody>
                     <?php foreach ($data['area'] as $area) { ?>
                         <tr>
-                            
                             <td><?= $area->a_nama ?></td>
                             <?php foreach ($data['kriteria'] as $kriteria) {
                                 $param['area'] = $area->a_kode;
@@ -73,7 +71,6 @@
                     <tr>
                         <th>Kode Area</th>
                         <?php foreach ($data['kriteria'] as $kriteria) { ?>
-                        
                             <th><?= $kriteria->k_nama ?></th>
                         <?php } ?>
                     </tr>
@@ -81,7 +78,6 @@
                 <tbody>
                     <?php foreach ($data['area'] as $area) { ?>
                         <tr>
-                            
                             <td><?= $area->a_nama ?></td>
                             <?php foreach ($data['kriteria'] as $kriteria) {
                                 $param['area'] = $area->a_kode;
@@ -130,7 +126,6 @@
     <!-- /.box -->
 </section>
                                                
-
 <script type="text/javascript">
     function wprint(){
         window.print();

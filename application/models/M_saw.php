@@ -46,7 +46,6 @@ class M_saw extends CI_Model
                 $average[$a->a_kode] += $normalisasi[$a->a_kode][$item->k_kode] * ($item->k_bobot/100);
                 $i++;
             }
-            //$average[$a->a_kode] = round($average[$a->a_kode] / $i,2); 
         }
         return $average;
     }

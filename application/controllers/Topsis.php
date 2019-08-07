@@ -1,9 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
 class Topsis extends User_Controller
 {
-
 	public function __construct()
 	{
 		parent::__construct();
@@ -11,7 +9,6 @@ class Topsis extends User_Controller
 		$this->load->model('m_area');
 		$this->load->model('m_kriteria');
 		$this->load->model('m_penilaian');
-
 	}
 	public function index()
 	{
@@ -31,11 +28,9 @@ class Topsis extends User_Controller
 		foreach ($data['area'] as $item) {
 			$alternatif[] = $item->a_kode;
 		}
-
     	$data['kriteria-reference'] = $this->m_penilaian->kriteria_reference($kriteria,$alternatif);
 		$data['ternormalisasi'] 	= $this->m_penilaian->ternormalisasi($kriteria,$alternatif,$data['kriteria-reference']);
 		$data['ideal'] 				= $this->m_penilaian->ideal($kriteria,$data['kriteria-reference'],$data['ternormalisasi']);
-
 		$data['alternatif']			= $alternatif;
 		$data['kriteria'] 			= $kriteria;
 		$param = array(
@@ -44,4 +39,3 @@ class Topsis extends User_Controller
 		$this->template($param);
 	}
 }
-

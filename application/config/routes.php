@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING
@@ -52,37 +51,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'authentication';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-
 $route['auth/login']        = 'authentication';
 $route['user/logout']        = 'authentication/logout';
 $route['auth/dologin']      = 'authentication/dologin';
 $route['user/dashboard']    = 'dashboard';
 $route['user/dashboard/map']= 'dashboard/loadmap';
-
 $route['user/area']         = 'area';
 $route['user/area/add']     = 'area/add';
 $route['user/area/simpan']     = 'area/save';
 $route['user/area/edit/(:any)']     = 'area/edit/$1';
 $route['user/area/update/(:any)']     = 'area/update/$1';
 $route['user/area/hapus/(:any)']     = 'area/delete/$1';
-
-
 $route['user/kriteria']         = 'kriteria';
 $route['user/kriteria/add']     = 'kriteria/add';
 $route['user/kriteria/simpan']     = 'kriteria/save';
 $route['user/kriteria/edit/(:any)']     = 'kriteria/edit/$1';
 $route['user/kriteria/update/(:any)']     = 'kriteria/update/$1';
 $route['user/kriteria/hapus/(:any)']     = 'kriteria/delete/$1';
-
 $route['user/penilaian']         = 'penilaian';
 $route['user/penilaian/simpan/(:any)']     = 'penilaian/save/$1';
 $route['user/penilaian/edit/(:any)']     = 'penilaian/edit/$1';
-
 $route['user/saw']         = 'saw';
 $route['user/saw/cetak']         = 'saw/cetak';
 $route['user/saw/cetak/lengkap']         = 'saw/cetak_lengkap';
 $route['user/grafik']         = 'grafik';
-
+$route['user/grafik/topsis']         = 'grafik/index2';
+$route['user/topsis']         = 'topsis';
+$route['user/topsis/cetak']         = 'topsis/cetak';
+$route['user/topsis/cetak/lengkap']         = 'topsis/cetak_lengkap';
 $route['user/tahun'] = 'tahun/index';
 $route['user/tahun/changetahun/(:any)/(:any)'] = 'tahun/changetahun/$1/$2';
 $route['user/tahun/add'] = 'tahun/add';
@@ -90,5 +86,4 @@ $route['user/tahun/edit/(:any)'] = 'tahun/edit/$1';
 $route['user/tahun/hapus/(:any)'] = 'tahun/delete/$1';
 $route['user/tahun/simpan'] = 'tahun/save';
 $route['user/tahun/update/(:any)'] = 'tahun/update/$1';
-
 $route['user/histori']         = 'histori';

@@ -2,7 +2,7 @@
 <section class="content-header">
     <h1>
         <?= fs_title() ?>
-        <!-- <small>Penilaian SAW</small> -->
+        <small>Penilaian SAW</small>
     </h1>
 </section>
 <!-- Default box -->
@@ -13,7 +13,7 @@
     <div class="box">
         <div class="box-header with-border">
 
-        <h3 class="box-title">Rating Kecocokan Setiap Kriteria</h3>
+        <h3 class="box-title">Data Matrix Awal</h3>
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
                     title="Collapse">
@@ -33,7 +33,6 @@
                 <tbody>
                     <?php foreach ($data['area'] as $area) { ?>
                         <tr>
-                           
                             <td><?= $area->a_nama ?></td>
                             <?php foreach ($data['kriteria'] as $kriteria) {
                                 $param['area'] = $area->a_kode;
@@ -66,7 +65,6 @@
                     <tr>
                         <th>Kode Area</th>
                         <?php foreach ($data['kriteria'] as $kriteria) { ?>
-                           
                             <th><?= $kriteria->k_nama ?></th>
                         <?php } ?>
                     </tr>
@@ -74,7 +72,6 @@
                 <tbody>
                     <?php foreach ($data['area'] as $area) { ?>
                         <tr>
-                            
                             <td><?= $area->a_nama ?></td>
                             <?php foreach ($data['kriteria'] as $kriteria) {
                                 $param['area'] = $area->a_kode;

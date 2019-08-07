@@ -33,7 +33,7 @@
 
   <?= fs_assets_head() ?>
 </head>
-<body class="skin-blue sidebar-mini">
+<body class="skin-blue-light sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
 

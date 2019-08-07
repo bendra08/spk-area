@@ -38,9 +38,7 @@
     <tbody>
         <?php $terbaik = ""; $terendah= 0;foreach ($data['area'] as $area) {
             if ($data['rangking'][$area->a_kode] == 1) $terbaik = $area->a_nama;
-            if ($data['rangking'][$area->a_kode] > $terendah) $terendah = $area->a_nama;
-
-            
+            if ($data['rangking'][$area->a_kode] > $terendah) $terendah = $area->a_nama;    
          ?>
             <tr>
                 <td><?= $area->a_kode ?></td>
@@ -52,6 +50,7 @@
         <?php } ?>
     </tbody>
 </table>
+
 <p>Area dengan nilai <strong>terbaik</strong> adalah <strong><?= $terbaik ?></strong> </p>
 <p>Area dengan nilai <strong>terendah</strong> adalah <strong><?= $terendah ?></strong> </p>
 
@@ -60,12 +59,7 @@
         <td style="border: 0px" width="50%"></td>
         <td style="border: 0px" align="center">Diketahui Oleh,<br><br><br><br><br>Manager HSE</td>
     </tr>
-</table>
-
-
-
-                                                   
-
+</table>                                     
 <script type="text/javascript">
     function wprint(){
         window.print();
