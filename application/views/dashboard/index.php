@@ -1,8 +1,8 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <?= fs_title() ?>
-        <!-- <small>Dashboard</small> -->
+        <!-- <?= fs_title() ?> -->
+        <small>Menu Utama</small>
     </h1>
 </section>
 <!-- Default box -->

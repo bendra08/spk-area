@@ -6,6 +6,7 @@
         table {
       border-collapse: collapse;
     }
+
     table, th, td {
       border: 1px solid black;
       padding: 5px;
@@ -17,12 +18,12 @@
 <table width="100%" style="border: 0px">
     <tr>
         <td style="border: 0px"><img width="80%" src="<?= base_url('assets/img/logo_lap.png') ?>"></td>
-        <td style="border: 0px"><h2>HASIL PENILAIAN AREA TERBAIK</h2></td>
+        <td style="border: 0px"><h2>SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN AREA TERBAIK</h2></td>
     </tr>
 </table>
 <!-- Default box -->
 <hr><br>
-<b>Hasil Metode SAW dan TOPSIS :</b><br><br>
+<b>Hasil Rangking Area SAW :</b><br><br>
 <!-- Main content -->
 <table id="dtable" class="table table-bordered table-hover" width="100%">
     <thead>
@@ -48,6 +49,7 @@
                 $terendah = $data['rangking'][$area->a_kode];
                 $terendah_desc = $area->a_nama;
             } 
+
             if ($rangking_topsis == 1) $terbaik_topsis = $area->a_nama;
             if ($rangking_topsis > $terendah_topsis){
                 $terendah_topsis = $rangking_topsis;
@@ -80,6 +82,10 @@
     </tr>
 </table>
 
+
+
+                                                   
+
 <script type="text/javascript">
     function wprint(){
         window.print();
@@ -90,5 +96,5 @@
     
 </script>
 </body>
-
 </html>
+

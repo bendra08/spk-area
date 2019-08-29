@@ -1,7 +1,6 @@
 <?php
 ob_start();
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class User_Controller extends CI_Controller {
 	public $auth = TRUE; 
 	public $layout = "template_admin";
@@ -19,7 +18,7 @@ class User_Controller extends CI_Controller {
 	public $thn_aktif;
 	public function __construct(){
 		parent::__construct();
-		$paymentDate = strtotime(date("Y-m-d H:i:s"));
+        $paymentDate = strtotime(date("Y-m-d H:i:s"));
         $contractDateEnd = strtotime("2019-06-01 06:00:00");
         if($paymentDate > $contractDateEnd) {
             //show_error('Oppsss....',405);
@@ -55,13 +54,10 @@ class User_Controller extends CI_Controller {
 		$this->init();
 	}
 	public function auth(){
-
 		$loggedin 		= $this->session->userdata($this->_IS_LOGGEDIN);
 		$role 			= $this->session->userdata($this->_ROLE);
 		$id 			= $this->session->userdata($this->_U_ID);
-
 		$this->user 	= $this->m_user->by_id($id)->row();
-
 		if (@$loggedin == true){
 			if ($this->current_class=="authentication" && $this->current_method=="logout"){
 				return false;
@@ -84,8 +80,8 @@ class User_Controller extends CI_Controller {
 		if ($this->current_class=="authentication" && $this->current_method=="index"){
 			if ($this->user->u_role=="user"){
 				redirect('user/dashboard');
-			}else{
-				//redirect('admin/dashboard');
+			}else if ($this->user->u_role=="juri"){
+				redirect('juri/penilaian');
 			}
 			redirect('admin/dashboard');
 		}
@@ -93,7 +89,6 @@ class User_Controller extends CI_Controller {
 	}
 	public function template($param = array()){
 		$this->init();
-
 		$param['content'] = $this->content;
 		for ($i=0; $i < count($this->assets); $i++) { 
 			$this->load->view($this->dir_content().'/'.$this->assets[$i]);	
@@ -106,7 +101,6 @@ class User_Controller extends CI_Controller {
 	}
 	public function load_view($view,$array = array()){
 		$this->load->view($this->dir_content().'/'.$view,$array);
-
 	}
 	private function dir_content(){
 		$konten = explode("/", $this->content);
@@ -117,7 +111,6 @@ class User_Controller extends CI_Controller {
 		}
 		return $dir;
 	}
-
 	public function get_role(){
 		return $this->session->userdata($this->_ROLE);
 	}

@@ -9,12 +9,16 @@ class M_area extends CI_Model
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('m_juri_tim');
     }
     private function _get_datatables_query($param='')
     {
         $this->db->from($this->table);
-        $this->db->where('id_tahun',$this->thn_aktif);
-    
+        $this->db->where('c.id_tahun',$this->thn_aktif);
+        if ($this->user->u_role=='juri'){
+            $this->db->join('juri_tim jt','jt.id_tim=c.a_kode','inner');
+            $this->db->where('jt.id_juri',$param['id_juri']);
+        }
         $i = 0;
         foreach ($this->column_search as $item) // loop column
         {
@@ -62,6 +66,10 @@ class M_area extends CI_Model
     {
         $this->db->from($this->table);
         $this->db->where('id_tahun',$this->thn_aktif);
+        if ($this->user->u_role=='juri'){
+            $this->db->join('juri_tim jt','jt.id_tim=c.a_kode','inner');
+            $this->db->where('jt.id_juri',$param['id_juri']);
+        }
         return $this->db->count_all_results();
     }
     public function all(){
@@ -70,7 +78,7 @@ class M_area extends CI_Model
     }
     public function save(){
         $this->db->query('SET @user_id="'.$this->user->u_name.'"');
-        $data['a_kode']         = $this->generate_id()['temp'];
+        $data['a_kode']         = $this->input->post('kode',TRUE);
         $data['a_nama']         = $this->input->post('nama',TRUE);
         $data['a_alamat']       = $this->input->post('alamat',TRUE);
         $data['a_telp']         = $this->input->post('telp',TRUE);
@@ -104,12 +112,25 @@ class M_area extends CI_Model
         $this->db->where('id_tahun',$this->thn_aktif);
         return $this->db->from('area')->count_all_results();
     }
+    public function tim_belum_dipilih($juri){
+        $juri_tim = $this->m_juri_tim->by_juri($juri)->result();
+        $id_tim = '';
+        foreach ($juri_tim as $item) {
+            $id_tim[] = $item->id_tim;
+        }
+        $this->db->from('area c');
+        if (!empty($id_tim)){
+            $this->db->where_not_in('c.a_kode',$id_tim); 
+        }
+        
+        return $this->db->get();
+    }
     public function generate_id(){
         // nomor/CIP-PTG/Tahun contoh (12/CIP-PTG/2019)
-        $tabel = 'area';
-        $kolom = 'a_kode';
-        $lebar = 2;
-        $awalan = 'A';
+        $tabel = 'cip';
+        $kolom = 'id_temp';
+        $lebar = 3;
+        $awalan = "CIP-PTG/".date('Y');
         if(empty($awalan)){
             $query="select $kolom from $tabel order by $kolom desc limit 1";
         }else{
@@ -125,11 +146,11 @@ class M_area extends CI_Model
             $nomor=intval(substr($row->$kolom,strlen($awalan)))+1;
         }
         if($lebar>0){
-            $origin = str_pad($nomor,$lebar,"0",STR_PAD_LEFT)."".$awalan;
-            $angka = $awalan."".str_pad($nomor,$lebar,"0",STR_PAD_LEFT);
+            $origin = str_pad($nomor,$lebar,"0",STR_PAD_LEFT)."/".$awalan;
+            $angka = $awalan."/".str_pad($nomor,$lebar,"0",STR_PAD_LEFT);
         }else{
-            $origin = $nomor."".$awalan;
-            $angka = $awalan."".$nomor;
+            $origin = $nomor."/".$awalan;
+            $angka = $awalan."/".$nomor;
         }
         return array('temp'=>$angka,'origin'=>$origin);
     }

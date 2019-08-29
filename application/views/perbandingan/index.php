@@ -59,7 +59,7 @@
           <thead>
             <tr>
               <th>Kode</th>
-              <th>Alternatif/Kriteria</th>
+              <th>Nama </th>
               <th>S+</th>
               <th>S-</th>
               <th>RC</th>

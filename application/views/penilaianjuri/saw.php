@@ -1,18 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Penilaian SAW</title>
-    <style type="text/css">
-        table {
-      border-collapse: collapse;
-    }
-    table, th, td {
-      border: 1px solid black;
-      padding: 5px;
-    }
-    </style>
-</head>
-<body>
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
@@ -29,9 +14,14 @@
         <div class="box-header with-border">
 
         <h3 class="box-title">Data Matrix Awal</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                    title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+            </div>
         </div>
         <div class="box-body table-responsive">
-            <table id="dtable" class="table table-bordered table-hover" width="100%">
+            <table id="dtable" class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>Kode Area</th>
@@ -47,10 +37,10 @@
                             <?php foreach ($data['kriteria'] as $kriteria) {
                                 $param['area'] = $area->a_kode;
                                 $param['kriteria'] = $kriteria->k_kode;
-                                $nilai = $this->m_penilaian->penilaian_kriteria_area_2($param)->row();
+                                $nilai = $this->m_penilaian->penilaian_kriteria_area($param)->row();
                                 $nilai = (empty($nilai)) ? 0 : @$nilai->pn_nilai;
                             ?>
-                                <td><?= round(@$nilai,2) ?></td>
+                                <td><?= @$nilai ?></td>
                             <?php } ?>
                         </tr>
                     <?php } ?>
@@ -63,9 +53,14 @@
         <div class="box-header with-border">
 
         <h3 class="box-title">Normalisasi</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                    title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+            </div>
         </div>
         <div class="box-body table-responsive">
-            <table id="dtable" class="table table-bordered table-hover" width="100%">
+            <table id="dtable" class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>Kode Area</th>
@@ -81,7 +76,7 @@
                             <?php foreach ($data['kriteria'] as $kriteria) {
                                 $param['area'] = $area->a_kode;
                                 $param['kriteria'] = $kriteria->k_kode;
-                                $nilai = $this->m_penilaian->penilaian_kriteria_area_2($param)->row();
+                                $nilai = $this->m_penilaian->penilaian_kriteria_area($param)->row();
                             ?>
                                 <td><?= @$data['normalisasi'][$area->a_kode][$kriteria->k_kode] ?></td>
                             <?php } ?>
@@ -96,9 +91,14 @@
         <div class="box-header with-border">
 
         <h3 class="box-title">Rangking</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                    title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+            </div>
         </div>
         <div class="box-body table-responsive">
-            <table id="dtable" class="table table-bordered table-hover" width="100%">
+            <table id="dtable" class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>Kode Area</th>
@@ -124,16 +124,3 @@
     </div>
     <!-- /.box -->
 </section>
-                                               
-
-<script type="text/javascript">
-    function wprint(){
-        window.print();
-    }
-    setTimeout(function() {
-        wprint();   
-    }, 1000);
-    
-</script>
-</body>
-</html>
