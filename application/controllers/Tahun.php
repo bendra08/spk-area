@@ -23,6 +23,7 @@ class Tahun extends User_Controller
 		$this->session->set_userdata('tahun_aktif',$thn);
 		redirect($redirect);
 	}
+			
 	public function add()
 	{
 		$this->title 	= "Form Tahun";
