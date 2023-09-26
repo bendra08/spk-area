@@ -53,9 +53,9 @@ class Topsis extends User_Controller
 		}
     	$data['kriteria-reference'] = $this->m_penilaian->kriteria_reference($kriteria,$alternatif);
 		$data['ternormalisasi'] 	= $this->m_penilaian->ternormalisasi($kriteria,$alternatif,$data['kriteria-reference']);
-		$data['ideal'] 				= $this->m_penilaian->ideal($kriteria,$data['kriteria-reference'],$data['ternormalisasi']);
-		$data['alternatif']			= $alternatif;
-		$data['kriteria'] 			= $kriteria;
+		$data['ideal'] 			= $this->m_penilaian->ideal($kriteria,$data['kriteria-reference'],$data['ternormalisasi']);
+		$data['alternatif']		= $alternatif;
+		$data['kriteria'] 		= $kriteria;
 		$param = array(
             'data' => $data,
 		);
